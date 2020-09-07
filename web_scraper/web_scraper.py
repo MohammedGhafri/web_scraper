@@ -76,14 +76,15 @@ def get_citations_needed_report():
                 
                 citation_needed(i,p.text.strip())
                 # print(p.text)
-                x = p.text.split("[citation needed]",)
-                print(x)
+                # x = p.text.split("[citation needed]",)
+                # print(x)
                 # print(len(result))
             
         
         except:
             continue
 
+    return citation_needed.dump()
 
 # get_citations_needed_report()
 
@@ -126,6 +127,7 @@ To write the data that need citaion
 
 if __name__=='__main__':
     get_citations_needed_count()
-    get_citations_needed_report()
+    print(len(get_citations_needed_report()))
+    print('[citation needed]' in get_citations_needed_report()[0]['paragraph need for citation'])
     with open('citation_needed.json', 'w') as outfile:
         json.dump(citation_needed.dump(), outfile)
